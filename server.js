@@ -9,8 +9,6 @@ const port = 3000;
 mongoose.set("strictQuery", false);
 const mongodb = process.env.DB_URL
 
-console.log(mongodb)
-
 app.get('/', (req,res)=> {
     res.send('hello world')
 });
