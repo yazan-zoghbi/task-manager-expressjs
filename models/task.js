@@ -8,6 +8,7 @@ const TaskSchema = new Schema({
     type: String,
     enum: ["to_do", "in_progress", "done"],
     required: true,
+    default: "to_do",
   },
   description: { type: String },
   assignees: [
