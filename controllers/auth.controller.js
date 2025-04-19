@@ -80,8 +80,13 @@ const loginUser = async (req, res) => {
       });
     }
 
+    const token = jwt.sign({ id: loggedUser._id }, process.env.JWT_SECRET, {
+      expiresIn: "6h",
+    });
+
     res.status(200).json({
       success: true,
+      token,
       user: {
         id: loggedUser.id,
         username: loggedUser.username,

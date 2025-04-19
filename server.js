@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //Routes
 app.use("/api/auth/", authRoutes);
-app.use("/api/task",  taskRoutes)
+app.use("/api/task/",  taskRoutes)
 
 app.listen(port, () => {
   console.log("server is running");

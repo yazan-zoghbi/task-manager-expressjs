@@ -1,4 +1,5 @@
 const Task = require("../models/task");
+const User = require("../models/user");
 
 const createTask = async (req, res) => {
   try {
@@ -11,7 +12,15 @@ const createTask = async (req, res) => {
       });
     }
 
-    const task = await Task.create({ title, status, description, assignees });
+    const userId = req.user.id;
+    const user = await User.findById(userId);
+    const task = await Task.create({
+      title,
+      status,
+      description,
+      assignees,
+      created: user.id,
+    });
 
     res.status(201).json({ success: true, task: task });
   } catch (error) {
@@ -62,4 +71,4 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = { createTask, updateTask, deleteTask};
+module.exports = { createTask, updateTask, deleteTask };
